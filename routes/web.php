@@ -12,3 +12,11 @@ Route::get('langauage/{locale}', function ($locale) {
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+//user confirmation register
+Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
+
+
+Route::get('/home', 'HomeController@index')->name('home');
