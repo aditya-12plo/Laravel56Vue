@@ -17,6 +17,10 @@ return [
         'guard' => 'web',
         'passwords' => 'users',
     ],
+    'user2s' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User2::class,
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -45,6 +49,14 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+        'user2' => [
+            'driver' => 'session',
+            'provider' => 'user2s',
+        ],
+        'user2-api' => [
+            'driver' => 'token',
+            'provider' => 'user2s',
+        ],
     ],
 
     /*
@@ -68,6 +80,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+       'user2s' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User2::class,
         ],
 
         // 'users' => [
@@ -94,6 +110,11 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'user2s' => [
+            'provider' => 'user2s',
             'table' => 'password_resets',
             'expire' => 60,
         ],

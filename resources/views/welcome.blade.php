@@ -64,10 +64,11 @@
             }
         </style>
     </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
+    <body> 
+<div class="row">
+  <div class="col-6">    
+    @if (Route::has('login'))
+                 
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
@@ -76,6 +77,23 @@
                     @endauth
                 </div>
             @endif
+         
+  <div class="col-6">              
+   @if (Route::has('user2.login')) 
+                    @auth
+                        <a href="{{ url('user2') }}">Home User 2</a>
+                    @else
+                        <a href="{{ route('user2.login') }}">Login User 2</a>
+                        <a href="{{ route('user2.register') }}">Register User 2</a>
+                    @endauth
+                
+            @endif
+        </div>
+</div>
+        <div class="flex-center position-ref full-height">
+       
+
+ 
 
             <div class="content">
                 <div class="title m-b-md">
